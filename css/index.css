@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+
+.wraper {
+  background: #000;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wraper ul {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wraper li {
+  width: 16%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #333;
+
+  /* 关闭后的过渡效果 */
+  transition: width 0.5s linear, height 0.5s linear 0.5s;
+}
+.wraper li .inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: 0.5s linear;
+}
+.wraper .init .inner {
+  transform: translateY(100%);
+}
+.wraper li:nth-child(1) .inner {
+  transition-delay: 0.1s;
+}
+.wraper li:nth-child(2) .inner {
+  transition-delay: 0.2s;
+}
+.wraper li:nth-child(3) .inner {
+  transition-delay: 0.3s;
+}
+.wraper li:nth-child(4) .inner {
+  transition-delay: 0.4s;
+}
+.wraper li:nth-child(5) .inner {
+  transition-delay: 0.5s;
+}
+.wraper li:nth-child(6) .inner {
+  transition-delay: 0.6s;
+}
+
+.wraper li .inner .bg {
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+}
+.wraper li:hover .inner .bg {
+  opacity: 1;
+}
+.wraper li:nth-child(1) .inner .bg {
+  background-image: url(../images/1.jpg);
+}
+.wraper li:nth-child(2) .inner .bg {
+  background-image: url(../images/2.jpg);
+}
+.wraper li:nth-child(3) .inner .bg {
+  background-image: url(../images/3.jpg);
+}
+.wraper li:nth-child(4) .inner .bg {
+  background-image: url(../images/4.jpg);
+}
+.wraper li:nth-child(5) .inner .bg {
+  background-image: url(../images/5.jpg);
+}
+.wraper li:nth-child(6) .inner .bg {
+  background-image: url(../images/6.jpg);
+}
+
+.wraper li h2 {
+  font-size: 16px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s linear 1s;
+}
+.wraper li:hover h2 {
+  font-size: 24px;
+}
+
+#activeWrap li h2 {
+  opacity: 0;
+  transition: 0.2s linear;
+}
+#activeWrap li:not(.active) {
+  height: 0%;
+  width: 0%;
+}
+#activeWrap li.active {
+  width: 100%;
+}
+#activeWrap li {
+  transition: height 0.5s linear, width 0.5s linear 0.5s;
+}
+
+/* 展开后的图片头部，一开始设置opacity：0 */
+.wraper li .direction {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 30px;
+  box-sizing: border-box;
+
+  position: absolute;
+  top: 50px;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+}
+
+.wraper li .direction .text {
+  color: #fff;
+  font-size: 24px;
+}
+.wraper li .direction .close {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+}
+.wraper li .direction .close::before,
+.wraper li .direction .close::after {
+  content: "";
+  width: 30px;
+  height: 4px;
+  background-color: #fff;
+  position: absolute;
+  top: calc(50% - 2px);
+}
+.wraper li .direction .close::before {
+  transform: rotate(45deg);
+}
+.wraper li .direction .close::after {
+  transform: rotate(-45deg);
+}
+
+/* 点击事件触发后opacity：1 */
+#activeWrap li .direction {
+  opacity: 1;
+  transition: 0.5s linear 1s;
+}
+#activeWrap li .direction .close {
+  transform: rotate(180deg);
+  transition: 0.5s linear 1s;
+}
